@@ -3,10 +3,10 @@ const express = require("express");
 const router = express.Router();
 const exerciseController = require("../Controllers/ExerciseController");
 
-router.post("/exercise", exerciseController.createExercise);
-router.get("/exercise/:id", exerciseController.getExerciseById);
+router.post("/product", exerciseController.createExercise);
+router.get("/product/:id", exerciseController.getExerciseById);
 
-router.get("/exercises", exerciseController.getAllExercise);
+router.get("/products", exerciseController.getAllExercise);
 // Add other routes as needed
 
 module.exports = router;

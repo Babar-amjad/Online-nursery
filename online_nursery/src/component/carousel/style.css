@@ -1,0 +1,10 @@
+.carosol{
+    width: 100%;
+    height: calc(100vh - 64px);
+}
+
+.slides-count{
+    position: relative;
+    top: -2rem;
+    color: blanchedalmond;
+}

@@ -27,32 +27,24 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 6,
   },
-  age: {
-    type: Number,
+  country: {
+    type: String,
     required: true,
   },
-  height: {
-    type: Number,
+  address: {
+    type: String,
     required: true,
   },
-  weight: {
-    type: Number,
+  city: {
+    type: String,
     required: true,
   },
-  targetweight: {
-    type: Number,
-    required: true,
-  },
+ 
   dateJoined: {
     type: Date,
     default: Date.now,
   },
-  trainer: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Trainer",
-    },
-  ],
+ 
 });
 
 module.exports = mongoose.model("Users", userSchema);

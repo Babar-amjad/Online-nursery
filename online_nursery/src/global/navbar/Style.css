@@ -1,0 +1,13 @@
+.search{
+    padding: 10px;
+}
+.search-bar{
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: none ;
+    padding: 10px;
+    max-width: 400px;
+    width: 100%;
+    font-weight: 400;
+}

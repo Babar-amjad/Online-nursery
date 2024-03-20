@@ -8,6 +8,7 @@ const userRoutes = require("./Routes/userRoute");
 //const CourseRoutes = require("./Routes/CourseRoute");
 const dietRoutes = require("./Routes/DietRoute");
 const exerciseRoutes = require("./Routes/ExerciseRoute");
+const plantRoutes = require("./Routes/PlantRoute");
 
 const app = express();
 
@@ -17,13 +18,13 @@ const PORT = process.env.PORT || 5500;
 connectDB();
 
 // Allow requests from url'
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    methods: "GET,POST",
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: ["http://localhost:5173"], // Add your frontend URL here
+  methods: "GET,POST",
+  credentials: true,
+};  
+
+app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
   res.send("Home Page");
@@ -41,3 +42,4 @@ app.use("/", userRoutes);
 app.use("/", userRoutes);
 app.use("/", dietRoutes);
 app.use("/", exerciseRoutes);
+app.use("/", plantRoutes);

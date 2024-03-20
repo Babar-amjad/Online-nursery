@@ -8,10 +8,10 @@ exports.createUser = async (req, res) => {
       lastname,
       email,
       password,
-      age,
-      height,
-      weight,
-      targetweight,
+      country,
+      city,
+      address,
+   
       dateJoined,
     } = req.body;
 
@@ -22,10 +22,9 @@ exports.createUser = async (req, res) => {
       lastname: lastname,
       email: email,
       password: hashedPassword,
-      age: age, // Previously used 'number', corrected to 'age'
-      height: height, // Corrected variable name
-      weight: weight, // Corrected variable name
-      targetweight: targetweight, // Corrected variable name
+      country: country, // Previously used 'number', corrected to 'age'
+      city: city, // Corrected variable name
+      address:address,
       dateJoined: dateJoined,
       //courses: courses, // Corrected variable name
     });

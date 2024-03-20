@@ -1,11 +1,65 @@
 import React from 'react'
 import { outdoor } from '../../component/outdoordata/OutdoorData'
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
 
 
-const Outdoor_plants = () => {
+const Outdoor_plants = ({cart,setCart}) => {
+  const addToCart = (id, image, name, category, price) => {
+    // Check if the item already exists in the cart
+    const isItemInCart = cart.some(item => item.id === id);
+  
+    // If the item is already in the cart, display a message and return early
+    if (isItemInCart) {
+      toast.warning('Item is already in cart', {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+  
+    // If the item is not in the cart, add it to the cart
+    const obj = {
+      id,
+      image,
+      name,
+      category,
+      price
+    };
+  
+    setCart([...cart, obj]);
+  
+    toast.success('Item added to cart', {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
   return (
     <div>
+       <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
        <section className="text-gray-600 body-font bg-pink-100 shadow-2xl">
         <div className="container px-5 py-24 mx-auto">
          
@@ -28,13 +82,7 @@ const Outdoor_plants = () => {
         {plant.name}
       </h2>
       <p className="mt-1">{plant.price}</p>
-      <button
-        onClick={() => handleClick(plant)}
-        className="bg-green-700 rounded-xl text-white p-2 my-2 mx-2"
-        category="button"
-      >
-        Add to Cart
-      </button>
+      <button onClick={() => addToCart(plant._id, plant.image, plant.name, plant.category, plant.price)} className="bg-green-700 rounded-xl text-white p-2 my-2 mx-2" category="button">Add to Cart</button>
     </div>
   </div>
 ))}
