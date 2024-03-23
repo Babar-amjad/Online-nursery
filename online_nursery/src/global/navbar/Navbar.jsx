@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { GiPlantsAndAnimals } from "react-icons/gi";
-import { TiShoppingCart } from "react-icons/ti";
-import './Style.css'
+// import { TiShoppingCart } from "react-icons/ti";
+import { BsCartCheck } from "react-icons/bs";
+import "./Style.css";
 
-
-
-const Navbar = ({ cart, setCart }) => {
-  
+const Navbar = ({ cart,size, setShow }) => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchItem, setSearchItem] = useState("");
@@ -27,31 +25,13 @@ const Navbar = ({ cart, setCart }) => {
     navigate(`/SearchItem/${searchItem}`);
     setSearchItem("");
   };
-  
 
   const toggleMenu = () => {
-    setIsMenuOpen(prevState => !prevState);
+    setIsMenuOpen((prevState) => !prevState);
   };
-
-
-  // const addToCart = () => {
-  //   // Sample item to be added to cart
-  //   const newItem = {
-  //     id: Math.random().toString(36).substr(2, 9),
-  //     name: "Sample Item", // Provide the actual name of the item
-  //     quantity: 1, // Initial quantity
-  //     price: 0 // Provide the actual price of the item
-  //   };
-    
-  //   // Update the cart state to add an item
-  //   setCart(prevCart => [...prevCart, newItem]);
-  //   // Increment the cart length
-  //   setCartLength(prevLength => prevLength + 1);
-  // };
 
   return (
     <nav className="bg-[#2dc653] sticky top-0 z-50 text-[#b76935] font-bold items-center dark:bg-gray-700 dark:border-gray-700">
-
       <div className="max-w-screen-xl  px-2 m-auto">
         <div className="flex justify-between items-center h-16 ">
           <div className="flex-shrink-0">
@@ -93,14 +73,14 @@ const Navbar = ({ cart, setCart }) => {
                 {isMenuOpen && (
                   <div className="absolute top-full left-0 mt-1 text-black rounded-md shadow-lg dark:bg-gray-700">
                     <ul className="py-1">
-                    <li>
-                <Link
-                  to="/flowers"
-                  className="text-black hover:bg-green-600 md:px-2 text-[10px] px-2 py-2 rounded-md"
-                >
-                  Flowers
-                </Link>
-              </li>
+                      <li>
+                        <Link
+                          to="/flowers"
+                          className="text-black hover:bg-green-600 md:px-2 text-[10px] px-2 py-2 rounded-md"
+                        >
+                          Flowers
+                        </Link>
+                      </li>
                       <li>
                         <Link
                           to="/Indoor_plants"
@@ -117,12 +97,11 @@ const Navbar = ({ cart, setCart }) => {
                           Outdoor plants
                         </Link>
                       </li>
-                  
                     </ul>
                   </div>
                 )}
               </li>
-             
+
               <li>
                 <Link
                   to="/Services"
@@ -140,45 +119,37 @@ const Navbar = ({ cart, setCart }) => {
                 </Link>
               </li>
               <li>
-                <Link to="/Login" className="text-black hover:bg-green-600 px-2 md:px-2 py-4 rounded-md">Login</Link>
+                <Link
+                  to="/Login"
+                  className="text-black hover:bg-green-600 px-2 md:px-2 py-4 rounded-md"
+                >
+                  Login
+                </Link>
               </li>
             </ul>
           </div>
           <div className="flex">
-          <form
-            onSubmit={handleSubmit}
-            className="search"
-          >
-            <input
-              className="search-bar align-center bg-red-black"
-              type="text"
-              placeholder="Search items"
-              id="search"
-              value={searchItem}
-              onChange={(e) => setSearchItem(e.target.value)}
-              
-            />
-          </form>
+            <form onSubmit={handleSubmit} className="search">
+              <input
+                className="search-bar align-center bg-red-black"
+                type="text"
+                placeholder="Search items"
+                id="search"
+                value={searchItem}
+                onChange={(e) => setSearchItem(e.target.value)}
+              />
+            </form>
 
-          <Link to="/Cart" className="flex items-center relative">
-            <span className="ml-1">
-              <button
-                type="button"
-                // onClick={addToCart}
-                className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                <TiShoppingCart className="text-2xl lg:text-2xl md:text-lg" />
-                <span className="sr-only">Cart</span>
-              </button>
-            </span>
-            {cartLength > 0 && (
-              <div className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex justify-center items-center">
-                {cartLength}
-              </div>
-            )}
-          </Link>
-          </div>
+            <Link to="/Cart" className="flex items-center relative">
+            <div className="cart " onClick={() => setShow(false)}>
+          <span className='text black'>
+          <span className="text-black bg-red-500">{size}</span>
+            <BsCartCheck className='text-2xl text-black' />
+          </span>
          
+        </div>
+            </Link>
+          </div>
 
           <div className="md:hidden">
             <button

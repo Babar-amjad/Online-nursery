@@ -206,7 +206,7 @@ const Footer = () => {
             </div>
           </div>
           <p className="mt-8 text-xs text-white  font-serif">
-            All Content ©2023 BA plants{" "}
+            All Content ©2024 BA plants{" "}
           </p>
         </div>
       </footer>

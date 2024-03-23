@@ -6,11 +6,9 @@ import Carousel from "../../component/carousel/Carousel";
 import Services from "../services/Services";
 import Contact from "../Contact/Contact";
 import Footer from "../../component/footer/Footer";
-import Timer from "../../component/Timer";
-
 const Home = ({ items, cart, setCart }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+  const itemsPerPage = 12;
 
   const addToCart = (id, image, name, category, price) => {
     // Check if the item already exists in the cart
@@ -142,8 +140,10 @@ const Home = ({ items, cart, setCart }) => {
             </button>
           </div>
         </div>
+      
       </section>
-      <Timer/>
+      {/* <Timer/> */}
+
       <Services />
       <Contact />
       <Footer />

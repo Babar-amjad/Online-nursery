@@ -23,7 +23,7 @@ import Cancel from './component/Cancel';
 function App() {
    const [data, setData] = useState([...items]);
    const [cart, setCart] = useState([]);
-
+   const [show, setShow] = useState(true);
    const handleClick = (itemId, itemImage, itemName, itemCategory, itemPrice) => {
       // Add the item to the cart
       setCart(prevCart => [
@@ -38,23 +38,11 @@ function App() {
       ]);
    };
 
-//    const handleChange = (item, change) => {
-//       const updatedCart = cart.map(cartItem => {
-//           if (cartItem.id === item.id) {
-//               return { ...cartItem, amount: cartItem.amount + change };
-//           }
-//           return cartItem;
-//       });
-//       setCart(updatedCart);
-//   };
-
-
-
    return (
       <>
 
 
-         <Navbar cart={cart} setData={setData} setCart={setCart} />
+         <Navbar cart={cart} setData={setData} setCart={setCart} size={cart.length} setShow={setShow} />
 
          
          <Routes>
@@ -67,7 +55,7 @@ function App() {
             <Route path='/cancel' element={<Cancel />} />
             <Route path='Indoor_plants' element={<IndoorPlants  setCart={setCart} cart={cart}/>} />
             <Route path='outdoor_plants' element={<OutdoorPlants  setCart={setCart} cart={cart}/>} />
-            <Route path='flowers' element={<Flowers setCart={setCart} cart={cart}/>} />
+            <Route path='flowers' element={<Flowers setCart={setCart} cart={cart} />} />
             <Route path='About' element={<About />} />
             <Route path='services' element={<Services />} />
             <Route path='Contact' element={<Contact />} />

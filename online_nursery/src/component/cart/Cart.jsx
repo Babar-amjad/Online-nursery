@@ -116,9 +116,10 @@ const Cart = ({ cart, setCart }) => {
               
             </div>
             
-           <button className='p-3 bg-orange-500 text-black justify-between items-center' onClick={() => makePayment(cart)} type='button'>Checkout</button>
+           <button className='p-3 mt-2 bg-orange-500 rounded-xl shadow-lg text-black justify-between items-center' onClick={() => makePayment(cart)} type='button'>Checkout</button>
         </article>
     );
 }
 
 export default Cart;
+
